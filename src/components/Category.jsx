@@ -3,14 +3,13 @@ import axios from "axios";
 import "./Category.css";
 
 function Category() {
-  const [categories, setCategories] = useState([]); 
-
+  const [categories, setCategories] = useState([]);
+  const url = `${import.meta.env.VITE_BASE_URL}`;
+  
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          "https://food-delivery-be-1-nryx.onrender.com/categories" 
-        );
+        const response = await axios.get(`${url}/categories`);
         setCategories(response.data);
       } catch (error) {
         console.log("Error:", error);

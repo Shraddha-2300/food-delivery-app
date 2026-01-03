@@ -4,10 +4,11 @@ import "./Offers.css";
 
 function Offers() {
   const [offers, setOffers] = useState([]);
+  const url = `${import.meta.env.VITE_BASE_URL}`
 
   useEffect(() => {
     axios
-      .get("https://food-delivery-be-1-nryx.onrender.com/offers") 
+      .get(`${url}/offers`) 
       .then((res) => setOffers(res.data));
   }, []);
 
