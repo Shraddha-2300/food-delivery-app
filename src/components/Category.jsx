@@ -9,7 +9,7 @@ function Category() {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/categories"
+          "https://food-delivery-be-1-nryx.onrender.com/categories" 
         );
         setCategories(response.data);
       } catch (error) {

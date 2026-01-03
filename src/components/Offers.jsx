@@ -7,7 +7,7 @@ function Offers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/offers")
+      .get("https://food-delivery-be-1-nryx.onrender.com/offers") 
       .then((res) => setOffers(res.data));
   }, []);
 
