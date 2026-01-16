@@ -23,7 +23,7 @@ function Offers() {
           <div className="offer-card" key={offer.id}>
             <img src={offer.image} alt={offer.title} />
             <h3>{offer.title}</h3>
-            <p>{offer.description}</p>
+            <b>{offer.description}</b>
           </div>
         ))}
       </div>
