@@ -16,7 +16,7 @@ function Offers() {
 
   return (
     <div className="offers-section">
-      <h2>Today's Offers 🔥</h2>
+      <h2>Today's Offers...</h2>
 
       <div className="offers-container">
         {offers.map((offer) => (

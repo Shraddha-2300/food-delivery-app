@@ -1,24 +1,42 @@
-import React from "react";
+import { useContext } from "react";
+import { CategoryContext } from "../context/CategoryContext";
+import { NavLink } from "react-router-dom";
 
-function Navbar({ setShowOffers }) {
+function Navbar() {
+  const { selectedCategory } = useContext(CategoryContext);
+
   return (
     <nav style={styles.nav}>
-      <h2 style={styles.name}>Foodies</h2>
+      <h2>Foodies...</h2>
 
       <ul style={styles.menu}>
-        <li style={styles.item}>Home</li>
-        <li style={styles.item}>Menu</li>
-
-        <li
-          style={{ ...styles.item, cursor: "pointer" }}
-          onClick={() => setShowOffers(true)}
-        >
-          Today's Offer
+        <li>
+          <NavLink to="/" style={styles.link}>
+            Home
+          </NavLink>
         </li>
 
-        <li style={styles.item}>Cart</li>
-        <li style={styles.item}>Order</li>
+        <li>
+          <NavLink to="/offers" style={styles.link}>
+            Today's Offer
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/cart" style={styles.link}>
+            Cart
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/login" style={styles.link}>Login</NavLink>
+        </li>
       </ul>
+
+      {selectedCategory && (
+        <p style={{ fontSize: "14px" }}>
+          Selected: <b>{selectedCategory}</b>
+        </p>
+      )}
     </nav>
   );
 }
@@ -27,28 +45,21 @@ const styles = {
   nav: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
     padding: "12px 30px",
     backgroundColor: "#e14040",
-    color: "white"
+    color: "white",
+    alignItems: "center",
   },
-
-  name: {
-    fontSize: "24px",
-    fontWeight: "bold"
-  },
-
   menu: {
     display: "flex",
     listStyle: "none",
-    gap: "22px",
-    margin: 0,
-    padding: 0
+    gap: "20px",
   },
-
-  item: {
-    cursor: "pointer"
-  }
+  link: {
+    color: "white",
+    textDecoration: "underline",
+    cursor: "pointer",
+  },
 };
 
 export default Navbar;

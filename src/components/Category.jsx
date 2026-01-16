@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./Category.css";
+import { CategoryContext } from "../context/CategoryContext";
 
 function Category() {
   const [categories, setCategories] = useState([]);
-  const url = `${import.meta.env.VITE_BASE_URL}`;
-  
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get(`${url}/categories`);
-        setCategories(response.data);
-      } catch (error) {
-        console.log("Error:", error);
-      }
-    };
+  const { setSelectedCategory } = useContext(CategoryContext);
 
-    fetchCategories();
-  }, []);
+  const url = import.meta.env.VITE_BASE_URL;
+
+  useEffect(() => {
+    axios
+      .get(`${url}/categories`)
+      .then((res) => setCategories(res.data))
+      .catch((err) => console.log(err));
+  }, [url]);
 
   return (
     <div className="category-section">
-      <h2>Food Items...</h2>
+      <h2>Food Categories</h2>
 
       <div className="category-container">
         {categories.map((item) => (
-          <div className="category" key={item.id}>
+          <div
+            key={item.id}
+            className="category"
+            onClick={() => setSelectedCategory(item.name)}
+          >
             <img src={item.image} alt={item.name} />
             <p>{item.name}</p>
           </div>
