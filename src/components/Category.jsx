@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Category.css";
-import { CategoryContext } from "../context/CategoryContext";
 
 function Category() {
   const [categories, setCategories] = useState([]);
-  const { setSelectedCategory } = useContext(CategoryContext);
-
+  const navigate = useNavigate();
   const url = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
@@ -25,7 +23,7 @@ function Category() {
           <div
             key={item.id}
             className="category"
-            onClick={() => setSelectedCategory(item.name)}
+            onClick={() => navigate(`/${item.name.toLowerCase()}`)}
           >
             <img src={item.image} alt={item.name} />
             <p>{item.name}</p>

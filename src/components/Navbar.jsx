@@ -1,10 +1,6 @@
-import { useContext } from "react";
-import { CategoryContext } from "../context/CategoryContext";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  const { selectedCategory } = useContext(CategoryContext);
-
   return (
     <nav style={styles.nav}>
       <h2>Foodies...</h2>
@@ -32,15 +28,9 @@ function Navbar() {
         </li>
       </ul>
 
-      {selectedCategory && (
-        <p style={{ fontSize: "14px" }}>
-          Selected: <b>{selectedCategory}</b>
-        </p>
-      )}
     </nav>
   );
 }
-
 const styles = {
   nav: {
     display: "flex",

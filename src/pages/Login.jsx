@@ -5,23 +5,28 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
+  
     if (!email || !password) {
       setError("All fields are required");
       return;
     }
 
-    alert("Login Successful...");
+    // just demo logic for now
+    console.log("Email:", email);
+    console.log("Password:", password);
+
     setError("");
+    alert("Login successful!");
   };
 
   return (
     <div style={styles.container}>
       <h2>Login</h2>
 
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <form onSubmit={handleLogin} style={styles.form}>
         <input
           type="email"
           placeholder="Email"

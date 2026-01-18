@@ -1,5 +1,5 @@
 function Cart() {
-  return <h5 style={{ padding: 40 }}> Cart Page </h5>;
+  return <h2> Cart Page</h2> 
 }
 
 export default Cart;

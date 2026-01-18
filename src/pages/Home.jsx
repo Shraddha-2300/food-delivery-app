@@ -1,17 +1,11 @@
 import Category from "../components/Category";
-import Foods from "../components/Foods";
-import Offers from "../components/Offers";
-import { useContext } from "react";
-import { CategoryContext } from "../context/CategoryContext";
 
 function Home() {
-  const { selectedCategory } = useContext(CategoryContext);
-
   return (
     <>
+      <h2 style={{ padding: "30px 60px" }}>Food Items...</h2>
+
       <Category />
-      {selectedCategory && <Foods selectedCategory={selectedCategory} />}
-      <Offers />
     </>
   );
 }

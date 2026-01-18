@@ -1,41 +1,23 @@
-import { Routes, Route } from "react-router-dom";
-import { useContext } from "react";
-
+import React from "react";
 import Navbar from "./components/Navbar";
-import Category from "./components/Category";
-import Foods from "./components/Foods";
-import Offers from "./components/Offers";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import CategoryPage from "./pages/CategoryPage";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 
-import { CategoryContext } from "./context/CategoryContext";
-
 function App() {
-  const { selectedCategory } = useContext(CategoryContext);
-
   return (
-    <>
+    <div>
       <Navbar />
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Category />
-              {selectedCategory && (
-                <Foods selectedCategory={selectedCategory} />
-              )}
-            </>
-          }
-        />
-
-        <Route path="/offers" element={<Offers />} />
-
+        <Route path="/" element={<Home />} />
+        <Route path="/:category" element={<CategoryPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
